@@ -1,6 +1,6 @@
 ### OpenMLC-UC3M
 
-A new implementation of OpenMLC-Matlab-2 (https://github.com/MachineLearningControl/OpenMLC-Matlab-2), including complete solutions for the already proposed problems, as well as new ones
+A new implementation of OpenMLC-Matlab-2 (https://github.com/tduriez/OpenMLC-Matlab-2), including complete solutions for the already proposed problems, as well as new ones
 
 ### Copyright and License
 
