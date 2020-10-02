@@ -2,10 +2,10 @@
 %%  Type mlc=MLC2('GP_lorenz') to create corresponding MLC object
 
 %number of individuals  
-parameters.size=50;
+parameters.size=100;
 parameters.sensors=3;                   %number of sensors(Ns)->3 because we have three equations(?)
 parameters.sensor_spec=0;
-parameters.controls=1;                  %number of actuation commands(Nb)=number of polynomials generated
+parameters.controls=3;                  %number of actuation commands(Nb)=number of polynomials generated
 parameters.sensor_prob=0.33;
 parameters.leaf_prob=0.3;
 parameters.range=10;
@@ -44,12 +44,11 @@ parameters.simplify=0;                  %simplify(?)
 parameters.cascade=[1 1];
 
 %% Evaluation method (select one of them)
-%parameters.evaluation_method='standalone_function';
-%parameters.evaluation_method='standalone_files';
+% parameters.evaluation_method='mfile_standalone';
 parameters.evaluation_method='mfile_multi';
 
 %%  Evaluator parameters
-parameters.evaluation_function='lorenz_problem';
+parameters.evaluation_function='lorenz_problem_stabilise';
 parameters.indfile='ind.dat';                           %where individual data is stored
 parameters.Jfile='J.dat';                               %where cost function data is stored
 parameters.exchangedir='../@MLC2/evaluator0';
