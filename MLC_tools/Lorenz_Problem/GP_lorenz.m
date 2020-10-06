@@ -2,7 +2,7 @@
 %%  Type mlc=MLC2('GP_lorenz') to create corresponding MLC object
 
 %number of individuals  
-parameters.size=100;
+parameters.size=50;
 parameters.sensors=3;                   %number of sensors(Ns)->3 because we have three equations(?)
 parameters.sensor_spec=0;
 parameters.controls=3;                  %number of actuation commands(Nb)=number of polynomials generated
