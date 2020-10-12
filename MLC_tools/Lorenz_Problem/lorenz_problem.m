@@ -26,7 +26,7 @@ function [J,sys]=lorenz_problem(ind,gen_param,i,fig)
         % In the other cases, the errors are sent to "errors_in_GP.txt"
         % with the numero of the defective individual.
         % In all cases, as the subroutine that erase the files crashes
-        % we do it here.
+        % we do it here.     
         sys=[];
         sys.crashed=1;
         if verb;fprintf('(%i) Simulation crashed: ',i);end

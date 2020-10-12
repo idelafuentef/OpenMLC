@@ -3,7 +3,7 @@ function [sys]=x0_rate_my_lorenz_stabilise(contro,ev,verb)
     load lorenz                                       %load canonical lorenz problem (3 equations right side)
     cont=contro;                                      %load control function
     init(:,1)=[1 1 1 0 0 0];                              %set initial conditions
-    build_system_after40(equa,cont,ev);               %function to create the system equation (it can change)
+    build_system(equa,cont,ev);               %function to create the system equation (it can change)
     systemthere=exist(['my_system_ev' num2str(ev) '.m'],'file');
     while systemthere==0
         systemthere=exist(['my_system_ev' num2str(ev) '.m'],'file');

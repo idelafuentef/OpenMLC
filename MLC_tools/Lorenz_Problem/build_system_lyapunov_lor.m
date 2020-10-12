@@ -19,13 +19,15 @@ function []=build_system_lyapunov_lor(list_of_eqs,list_of_controls,thread_number
 	for i=1:n
         if isempty(list_of_controls{i})
 			eq=list_of_eqs{i};
-		else
+        else
+            ctrl=list_of_eqs{i};
 			eq=['(+ ' list_of_eqs{i} ' ' list_of_controls{i} ')'];
-			fprintf(fid,['b(' num2str(i) ')= ' readmylisp_to_formal_MLC(list_of_controls{i}) ';\n']);
+			fprintf(fid,['b(' num2str(i) ')= ' readmylisp_to_formal_MLC(ctrl) ';\n']);
         end
         dumstring=readmylisp_to_formal_MLC(eq);
 		fprintf(fid,['f(' num2str(i) ')= ' dumstring ';\n']);
     end
+    
 %% Construction of the Jacobian
 	for i=1:n
 		%dumstring=[];
@@ -40,8 +42,9 @@ function []=build_system_lyapunov_lor(list_of_eqs,list_of_controls,thread_number
 			%fprintf(['compond: ' eq '\n']);
 			%fprintf(num2str(j-1));fprintf('\n')
 			%fprintf(eq);fprintf('\n')
-			devstring=readmylisp_to_formal_MLC(Derivate_My_Lisp(eq,j-1));
-			fprintf(fid,['Jac(' num2str(i) ',' num2str(j) ')=' devstring ';\n']);
+            devstring=Derivate_My_Lisp(eq,j-1);
+			devstring2=readmylisp_to_formal_MLC(devstring);
+			fprintf(fid,['Jac(' num2str(i) ',' num2str(j) ')=' devstring2 ';\n']);
 		end
 		%fprintf(fid,[dumstring '\n']);
 	end
