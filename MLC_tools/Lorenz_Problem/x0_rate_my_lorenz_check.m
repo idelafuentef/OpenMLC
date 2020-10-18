@@ -1,8 +1,8 @@
-function [sys]=x0_rate_my_lorenz_check(rho,contro,ev)
+function [sys]=x0_rate_my_lorenz_check(contro,ev)
     load lorenz
     warning off
     cont=contro;
-%     init(:,1)=[0 0 0];
+    init(:,1)=[0 0 0];
 %     if rho<=1 
 %         init(:,2)=init(:,1)+rand(3,1);
 %         init(:,3)=init(:,1)+rand(3,1);
@@ -33,7 +33,7 @@ function [sys]=x0_rate_my_lorenz_check(rho,contro,ev)
     fprintf(['LE : %f %f %f\n'],LE(end,:));
     for i=1:3
         fprintf(['Newton descent on point number ' num2str(i) '\n']);tic
-        eval(['fp(:,i)=my_newton(equa,cont,@my_lyapunov_ev' num2str(100+ev) ',init(:,i));']);
+        eval(['fp(:,i)=my_newton(equa,cont,@my_lyapunov_ev' num2str(100+ev) ',[0 1 0]);']);
         fprintf(['done in ' num2str(toc) ' seconds\n']);
         fprintf(['Stability around point ' num2str(i) '\n']);tic
         lambda(:,i)=eig(my_jacob2(equa,cont,fp(:,i)));

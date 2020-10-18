@@ -3,13 +3,12 @@ function [J,sys]=lorenz_problem(ind,gen_param,i,fig)
     verb=gen_param.verbose;
     contro=cell(1,3);
     contro{3}=ind.value(7:end-1);
-    rho=gen_param.problem_variables.rho;
     gamma=gen_param.problem_variables.gamma;
     if verb
         fprintf('(%i) Simulating ...\n',i)
     end
     try
-        [sys]=x0_rate_my_lorenz(rho,contro,i,verb>1);		%% Evaluates individual
+        [sys]=x0_rate_my_lorenz(contro,i,verb>1);		%% Evaluates individual
         if strncmp(lastwarn,'Failure',7)
             warning('reset')
             sys.crashed=1;
@@ -74,10 +73,15 @@ function [J,sys]=lorenz_problem(ind,gen_param,i,fig)
         fig=0;
     end
     if fig==1
-        [sys]=x0_rate_my_lorenz_check(rho,contro,i);
+        [sys]=x0_rate_my_lorenz_check(contro,i);
         figure(969)
             plot(sys.T,sys.Y(:,1:3));
+            title('State variables')
+            ylabel('s')
+            xlabel('t')
+            legend('s1','s2','s3')
         figure(970)
         plot3(sys.Y(:,1),sys.Y(:,2),sys.Y(:,3))
+        title('3d Evolution')
     end
 end

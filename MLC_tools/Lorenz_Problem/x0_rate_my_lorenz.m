@@ -1,4 +1,4 @@
-function [sys]=x0_rate_my_lorenz(rho,contro,ev,verb)
+function [sys]=x0_rate_my_lorenz(contro,ev,verb)
     warning off
     load lorenz                                       %load canonical lorenz problem (3 equations right side)
 %     idx=findstr('28',equa{2});                      %find value rho=28 (chaotic behavior)

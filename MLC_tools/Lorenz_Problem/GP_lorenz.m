@@ -48,7 +48,8 @@ parameters.cascade=[1 1];
 parameters.evaluation_method='mfile_multi';
 
 %%  Evaluator parameters
-parameters.evaluation_function='lorenz_problem_stabilise';
+parameters.evaluation_function='lorenz_problem_stabilise';  %just force an equilibrium point
+% parameters.evaluation_function='lorenz_problem';            %look for stable system
 parameters.indfile='ind.dat';                           %where individual data is stored
 parameters.Jfile='J.dat';                               %where cost function data is stored
 parameters.exchangedir='../@MLC2/evaluator0';
@@ -67,15 +68,14 @@ parameters.badvalues_elim='first';
 parameters.preevaluation=0;
 parameters.preev_function='';
 
-%% Problem variables (rho, sigma only active in Lorenz problem)
-parameters.problem_variables.rho=20;
-parameters.problem_variables.gamma=0.000001;
+%% Relative weight of cost function
+parameters.problem_variables.gamma=1e-6;
 
 
 %% MLC behaviour parameters 
 parameters.save=1;                                      %save parameters (T,F)
 parameters.saveincomplete=1;                            %save incomplete (T,F)
-parameters.verbose=2;                                   %verbose (from 0 to 4)
+parameters.verbose=4;                                   %output messages (from 0 to 4)
 parameters.fgen=250;                                    %fgen(?)
 parameters.show_best=1;                                 %show best(?)
 parameters.savedir=fullfile(pwd,'save_GP');             %save directory
